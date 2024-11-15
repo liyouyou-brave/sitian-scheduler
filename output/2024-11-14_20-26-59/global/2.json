@@ -1,0 +1,14 @@
+{
+    "site_id": 2,
+    "target": [
+        {
+            "targ_id": 167,
+            "ra_targ": 88.57667,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        }
+    ]
+}

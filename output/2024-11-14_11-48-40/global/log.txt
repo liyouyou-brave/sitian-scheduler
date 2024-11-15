@@ -1,0 +1,16 @@
+At time 2022-05-01T00:00:00, resource=kagra, target=167, exp_time=5
+At time 2022-05-01T00:05:00, resource=kagra, target=168, exp_time=5
+At time 2022-05-01T00:10:00, resource=kagra, target=169, exp_time=5
+At time 2022-05-01T00:15:00, resource=kagra, target=170, exp_time=5
+At time 2022-05-01T00:20:00, resource=kagra, target=171, exp_time=5
+At time 2022-05-01T00:25:00, resource=kagra, target=172, exp_time=5
+At time 2022-05-01T00:30:00, resource=kagra, target=184, exp_time=5
+At time 2022-05-01T00:35:00, resource=kagra, target=185, exp_time=5
+At time 2022-05-01T00:40:00, resource=kagra, target=186, exp_time=5
+At time 2022-05-01T00:45:00, resource=kagra, target=187, exp_time=5
+At time 2022-05-01T00:50:00, resource=kagra, target=188, exp_time=5
+At time 2022-05-01T00:55:00, resource=kagra, target=173, exp_time=5
+At time 2022-05-01T01:00:00, resource=paranal, target=181, exp_time=5
+At time 2022-05-01T01:00:00, resource=kagra, target=189, exp_time=5
+At time 2022-05-01T01:05:00, resource=paranal, target=182, exp_time=5
+At time 2022-05-01T01:05:00, resource=kagra, target=190, exp_time=5
