@@ -10,7 +10,7 @@ from sschedule.Site import Site
 import numpy as np
 import os
 # import pymysql
-
+import mysql.connector
 import random
 import json
 
@@ -20,125 +20,129 @@ import json
 # m天区
 # timeslot时间片
 
-# def readin_target_txt(m: int):
-#     # surveyplan
+def readin_target_txt(m: int):
+    # surveyplan
 
-#     # 打开数据库连接
-#     # 主机名、用户名、密码和数据库名
-#     db = pymysql.connect(host='localhost',
-#                          user='root',
-#                          password='1q2w3e4r',
-#                          database='sitian',
-#                          port=3306)
+    # 打开数据库连接
+    # 主机名、用户名、密码和数据库名
+    db = mysql.connector.connect(
+        host = 'localhost',
+        user = 'rainy',
+        password = '@Sql2024',
+        database = 'sitian_db'
+        )
 
-#     # 使用 cursor() 方法创建一个游标对象 cursor
-#     cursor = db.cursor()
+    # 使用 cursor() 方法创建一个游标对象 cursor
+    cursor = db.cursor()
 
-#     sql = "INSERT INTO target (targ_id, ra_targ, dec_targ) VALUES (%s, %s, %s)"
+    sql = "INSERT INTO target (targ_id, ra_targ, dec_targ) VALUES (%s, %s, %s)"
 
-#     # 读文件并建立m个天区
-#     with open(f'./input/surveyplan-{m}.txt', 'r') as file:
-#         # 去掉第一行
-#         lines = file.readlines()[1:]
-#         for line in lines:
-#             data = line.strip().split()
-#             cursor.execute(sql, (data[0], data[1], data[2]))
+    # 读文件并建立m个天区
+    with open(f'./input/surveyplan-{m}.txt', 'r') as file:
+        # 去掉第一行
+        lines = file.readlines()[1:]
+        for line in lines:
+            data = line.strip().split()
+            cursor.execute(sql, (data[0], data[1], data[2]))
 
-#     db.commit()
-#     cursor.close()
-#     db.close()
+    db.commit()
+    cursor.close()
+    db.close()
 
-# def readin_site_txt(n: int):
-#     # resource
+def readin_site_txt(n: int):
+    # resource
 
-#     # 打开数据库连接
-#     # 主机名、用户名、密码和数据库名
-#     db = pymysql.connect(host='localhost',
-#                          user='root',
-#                          password='1q2w3e4r',
-#                          database='sitian',
-#                          port=3306)
+    # 打开数据库连接
+    # 主机名、用户名、密码和数据库名
+    db = mysql.connector.connect(
+        host = 'localhost',
+        user = 'rainy',
+        password = '@Sql2024',
+        database = 'sitian_db'
+        )
 
-#     # 使用 cursor() 方法创建一个游标对象 cursor
-#     cursor = db.cursor()
+    # 使用 cursor() 方法创建一个游标对象 cursor
+    cursor = db.cursor()
 
-#     sql = "INSERT INTO site (site_id, sitename, site_lon, site_lat, site_alt) VALUES (%s, %s, %s, %s, %s)"
+    sql = "INSERT INTO site (site_id, sitename, site_lon, site_lat, site_alt) VALUES (%s, %s, %s, %s, %s)"
 
-#     # 读文件并建立n个台站
-#     with open(f'./input/resources-{n}.txt', 'r') as file:
-#         # 去掉第一行
-#         lines = file.readlines()[1:]
-#         for line in lines:
-#             data = line.strip().split()
-#             cursor.execute(sql, (data[0], data[1], data[2], data[3], data[4]))
+    # 读文件并建立n个台站
+    with open(f'./input/resources-{n}.txt', 'r') as file:
+        # 去掉第一行
+        lines = file.readlines()[1:]
+        for line in lines:
+            data = line.strip().split()
+            cursor.execute(sql, (data[0], data[1], data[2], data[3], data[4]))
 
-#     db.commit()
-#     cursor.close()
-#     db.close()
+    db.commit()
+    cursor.close()
+    db.close()
 
-# def get_list_target(m: int):
-#     # surveyplan
+def get_list_target(m: int):
+    # surveyplan
 
-#     # 天区列表
-#     listm = []
+    # 天区列表
+    listm = []
 
-#     # 打开数据库连接
-#     # 主机名、用户名、密码和数据库名
-#     db = pymysql.connect(host='localhost',
-#                          user='root',
-#                          password='1q2w3e4r',
-#                          database='sitian',
-#                          port=3306)
+    # 打开数据库连接
+    # 主机名、用户名、密码和数据库名
+    db = mysql.connector.connect(
+        host = 'localhost',
+        user = 'rainy',
+        password = '@Sql2024',
+        database = 'sitian_db'
+        )
 
-#     # 使用 cursor() 方法创建一个游标对象 cursor
-#     cursor = db.cursor()
+    # 使用 cursor() 方法创建一个游标对象 cursor
+    cursor = db.cursor()
 
-#     sql = "SELECT * FROM target LIMIT %s"
-#     cursor.execute(sql, m)
-#     results = cursor.fetchall()
-#     for row in results:
-#         target_tem = Target(int(row[0]), float(row[2]), float(row[3]), -1, 0, 0, 1)
-#         listm.append(target_tem)
-#         # 打印结果
-#         print(target_tem.num, target_tem.ra, target_tem.dec)
+    sql = "SELECT * FROM target LIMIT %s"
+    cursor.execute(sql, (m,))
+    results = cursor.fetchall()
+    for row in results:
+        target_tem = Target(int(row[0]), float(row[2]), float(row[3]), -1, 0, 0, 1)
+        listm.append(target_tem)
+        # 打印结果
+        print(target_tem.num, target_tem.ra, target_tem.dec)
 
-#     db.commit()
-#     cursor.close()
-#     db.close()
+    db.commit()
+    cursor.close()
+    db.close()
 
-#     return listm
+    return listm
 
-# def get_list_observer(n: int):
-#     # resource
+def get_list_observer(n: int):
+    # resource
 
-#     # 台站列表
-#     listn = []
+    # 台站列表
+    listn = []
 
-#     # 打开数据库连接
-#     # 主机名、用户名、密码和数据库名
-#     db = pymysql.connect(host='localhost',
-#                          user='root',
-#                          password='1q2w3e4r',
-#                          database='sitian',
-#                          port=3306)
+    # 打开数据库连接
+    # 主机名、用户名、密码和数据库名
+    db = mysql.connector.connect(
+        host = 'localhost',
+        user = 'rainy',
+        password = '@Sql2024',
+        database = 'sitian_db'
+        )
 
-#     # 使用 cursor() 方法创建一个游标对象 cursor
-#     cursor = db.cursor()
+    # 使用 cursor() 方法创建一个游标对象 cursor
+    cursor = db.cursor()
 
-#     sql = "SELECT * FROM site LIMIT %s"
-#     cursor.execute(sql, n)
-#     results = cursor.fetchall()
-#     for row in results:
-#         observer_tem = Observer(int(row[0]), str(row[1]), float(row[2]), float(row[3]), float(row[4]))
-#         listn.append(observer_tem)
-#         # 打印结果
-#         print(observer_tem.num, observer_tem.name, observer_tem.ra, observer_tem.dec)
+    sql = "SELECT * FROM site LIMIT %s"
+    cursor.execute(sql, (n,))
+    results = cursor.fetchall()
+    for row in results:
+        observer_tem = Observer(int(row[0]), str(row[1]), float(row[2]), float(row[3]), float(row[4]))
+        listn.append(observer_tem)
+        # 打印结果
+        print(observer_tem.num, observer_tem.name, observer_tem.ra, observer_tem.dec)
 
-#     db.commit()
-#     cursor.close()
-#     db.close()
+    db.commit()
+    cursor.close()
+    db.close()
 
-#     return listn
+    return listn
 
 
 def get_list_target_from_txt(m: int):
@@ -264,10 +268,10 @@ def GBlock(n: int, m: int, timeslot: int, start_time: str, end_time: str):
     # readin_site_txt(n)
 
     # 天区列表
-    list_tar = get_list_target_from_txt(m)
+    list_tar = get_list_target(m)
 
     # 台站列表
-    list_obs = get_list_observer_from_txt(n)
+    list_obs = get_list_observer(n)
 
 
 

@@ -7,6 +7,8 @@ import time
 import select
 import json
 import mysql.connector
+from gschedule import Global
+
 # Create socket path
 SOCKET_PATH = "/tmp/Global_socket"
 # Max connection
@@ -51,7 +53,7 @@ def handle_client(client):
 
             print("Calculating")
             # global_cal()
-            # Global.GBlock(5, 100, 5, '2022-05-01T00:00:00', '2022-05-03T00:00:00')
+            Global.GBlock(5, 100, 5, '2022-05-01T00:00:00', '2022-05-03T00:00:00')
 
             with open('1.json', 'r') as j:
                 response = json.load(j)
