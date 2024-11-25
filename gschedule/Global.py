@@ -393,5 +393,7 @@ def GBlock(n: int, m: int, timeslot: int, start_time: str, end_time: str):
 
     # 每个天区airmass平均值
     tar_airmass_mean(m, list_tar, f"./output/{now}/global/mean_airmass.png")
+    
+    return now
 
 

@@ -11,6 +11,7 @@ import time
 import select
 import threading
 import json
+import struct
 # import "" 
 # Create socket path
 SOCKET_PATH = "/tmp/Site_socket"
@@ -24,27 +25,27 @@ result_lock = threading.Lock()
 
 def bind_socket(server):
     server.bind(SOCKET_PATH)
-    print(f"Socket binded to {SOCKET_PATH}")
+    # print(f"Socket binded to {SOCKET_PATH}")
     server.listen(BACKLOG)
 
 def create_server_socket():
     # Create socket
-    print(f"Site server socket is creating socket, please wait a minute...")
+    # print(f"Site server socket is creating socket, please wait a minute...")
     time.sleep(1)
     server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM, 0)
-    print(f"Socket has been created, server.family is {server.family}, server.proto is {server.proto}")
+    # print(f"Socket has been created, server.family is {server.family}, server.proto is {server.proto}")
 
     # delete the previous connection
     if os.path.exists(SOCKET_PATH):
         os.unlink(SOCKET_PATH)
 
     # bind the path
-    print(f"Server socket is binding the path, please wait a minute...")
+    # print(f"Server socket is binding the path, please wait a minute...")
     time.sleep(1)
     bind_socket(server)
     # Set non-blocking mode
     server.setblocking(False)
-    print(f"Server is listenning client's connect...")
+    # print(f"Server is listenning client's connect...")
     return server
 
 def wait_and_connection(server):
@@ -73,7 +74,7 @@ def handle_push(client):
     '''
     send_message = "new result has been updated\n"
     client.sendall(send_message.encode("utf-8"))
-    print("Updated request has been sended\n")
+    # print("Updated request has been sended\n")
     
 def handle_request(client):
     '''
@@ -81,20 +82,28 @@ def handle_request(client):
     '''
     send_message = "result"
     client.sendall(send_message.encode("utf-8"))
-    print("Request has been sended\n")
+    # print("Request has been sended\n")
 
 def handle_client(client):
     while True:
-        recv_data = client.recv(BUFFER_SIZE).decode("utf-8")
+        me_len = client.recv(4)
+        me_len = struct.unpack('I', me_len)[0]
+        print(f"me_len: {me_len}")
+        recv_data = client.recv(me_len).decode("utf-8")
+        print(f"\n\n\n\n{recv_data}\n\n\n\n")
         if not recv_data:
             print(f"Client socket closed! Connection break down!")
             break
         else:
+            print(f"\n\nrecv_data:\n {recv_data}\n\n")
             recv_data = json.loads(recv_data)
             if recv_data.get('GENERAL-INFO',{}).get('operate') == "request":
+                # print("line 95: ")
                 threading.Thread(target=handle_request, args=(client,), daemon=True).start()
                 
             elif recv_data.get('GENERAL-INFO',{}).get('operate') == "push":
+                # print("line 99: ")
+                
                 threading.Thread(target=handle_push, args=(client,), daemon=True).start()
 
             else:
@@ -106,3 +115,4 @@ def start_site_server():
     server = create_server_socket()
     wait_and_connection(server)
     server.close()
+start_site_server()
