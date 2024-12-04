@@ -2,6 +2,9 @@ from datetime import datetime, timedelta
 # import pymysql
 from gschedule.sblock import Sblock
 import mysql.connector
+import os
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # 时间推移timeslot的时间
 def time_after_timeslot(t_now: str, timeslot: int):
     # 将字符串解析为 datetime 对象
@@ -32,27 +35,27 @@ def Site(SB: Sblock, directory: str, task_num):
     sql = "INSERT INTO task (task_id, targ_id, site_id, obstime) VALUES (%s, %s, %s, %s)"
 
     cursor.execute(sql, (task_num, SB.target.num, SB.site.num, 1))
-    with open(f"./output/{directory}/site/log.txt", 'a') as file:
+    with open(f"{base_dir}/output/{directory}/site/log.txt", 'a') as file:
         file.write(f"At time {time_after_timeslot(SB.start_time, 0)}, tele={1}, target={SB.target.num}, exp_time={1}")
         file.write("\n")
 
     cursor.execute(sql, (task_num+1, SB.target.num, SB.site.num, 1))
-    with open(f"./output/{directory}/site/log.txt", 'a') as file:
+    with open(f"{base_dir}/output/{directory}/site/log.txt", 'a') as file:
         file.write(f"At time {time_after_timeslot(SB.start_time, 1)}, tele={2}, target={SB.target.num}, exp_time={1}")
         file.write("\n")
 
     cursor.execute(sql, (task_num+2, SB.target.num, SB.site.num, 1))
-    with open(f"./output/{directory}/site/log.txt", 'a') as file:
+    with open(f"{base_dir}/output/{directory}/site/log.txt", 'a') as file:
         file.write(f"At time {time_after_timeslot(SB.start_time, 2)}, tele={3}, target={SB.target.num}, exp_time={1}")
         file.write("\n")
 
     cursor.execute(sql, (task_num+3, SB.target.num, SB.site.num, 1))
-    with open(f"./output/{directory}/site/log.txt", 'a') as file:
+    with open(f"{base_dir}/output/{directory}/site/log.txt", 'a') as file:
         file.write(f"At time {time_after_timeslot(SB.start_time, 3)}, tele={4}, target={SB.target.num}, exp_time={1}")
         file.write("\n")
 
     cursor.execute(sql, (task_num+4, SB.target.num, SB.site.num, 1))
-    with open(f"./output/{directory}/site/log.txt", 'a') as file:
+    with open(f"{base_dir}/output/{directory}/site/log.txt", 'a') as file:
         file.write(f"At time {time_after_timeslot(SB.start_time, 4)}, tele={5}, target={SB.target.num}, exp_time={1}")
         file.write("\n")
 

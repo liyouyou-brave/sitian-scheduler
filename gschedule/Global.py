@@ -9,17 +9,20 @@ from gschedule.sblock import Sblock
 from sschedule.Site import Site
 import numpy as np
 import os
+import time
 # import pymysql
 import mysql.connector
 import random
 import json
-
+import pdb
 
 # 全局调度
 # n台站
 # m天区
 # timeslot时间片
-
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# print(base_dir)
+# pdb.set_trace()
 def readin_target_txt(m: int):
     # surveyplan
 
@@ -38,7 +41,8 @@ def readin_target_txt(m: int):
     sql = "INSERT INTO target (targ_id, ra_targ, dec_targ) VALUES (%s, %s, %s)"
 
     # 读文件并建立m个天区
-    with open(f'./input/surveyplan-{m}.txt', 'r') as file:
+    print(base_dir)
+    with open(f'{base_dir}/input/surveyplan-{m}.txt', 'r') as file:
         # 去掉第一行
         lines = file.readlines()[1:]
         for line in lines:
@@ -67,7 +71,7 @@ def readin_site_txt(n: int):
     sql = "INSERT INTO site (site_id, sitename, site_lon, site_lat, site_alt) VALUES (%s, %s, %s, %s, %s)"
 
     # 读文件并建立n个台站
-    with open(f'./input/resources-{n}.txt', 'r') as file:
+    with open(f'{base_dir}/input/resources-{n}.txt', 'r') as file:
         # 去掉第一行
         lines = file.readlines()[1:]
         for line in lines:
@@ -150,7 +154,7 @@ def get_list_target_from_txt(m: int):
     listm = []
 
     # 读文件并建立m个天区
-    with open(f'./input/surveyplan-{m}.txt', 'r') as file:
+    with open(f'{base_dir}/input/surveyplan-{m}.txt', 'r') as file:
         # 去掉第一行
         lines = file.readlines()[1:]
         for line in lines:
@@ -168,7 +172,7 @@ def get_list_observer_from_txt(n: int):
     listn = []
 
     # 读文件并建立n个台站
-    with open(f'./input/resources-{n}.txt', 'r') as file:
+    with open(f'{base_dir}/input/resources-{n}.txt', 'r') as file:
         # 去掉第一行
         lines = file.readlines()[1:]
         for line in lines:
@@ -237,13 +241,13 @@ def globle_json(now: str, site: Observer, target: Target, timeslot: int):
     }
     '''
 
-    if not os.path.exists(f"./output/{now}/global/{site.num}.json"):
-        with open(f"./output/{now}/global/{site.num}.json", 'w') as file:
+    if not os.path.exists(f"{base_dir}/output/{now}/global/{site.num}.json"):
+        with open(f"{base_dir}/output/{now}/global/{site.num}.json", 'w') as file:
             json.dump({"site_id": site.num,"target":[]}, file, indent=4)
 
 
     # 读取JSON文件
-    with open(f"./output/{now}/global/{site.num}.json", 'r') as file:
+    with open(f"{base_dir}/output/{now}/global/{site.num}.json", 'r') as file:
         data = json.load(file)
 
     # 往第二个键值对数组添加数据
@@ -258,14 +262,14 @@ def globle_json(now: str, site: Observer, target: Target, timeslot: int):
     })
 
     # 把修改后的数据写回JSON文件
-    with open(f"./output/{now}/global/{site.num}.json", 'w') as file:
+    with open(f"{base_dir}/output/{now}/global/{site.num}.json", 'w') as file:
         json.dump(data, file, indent=4) # indent缩进
 
 
 def GBlock(n: int, m: int, timeslot: int, start_time: str, end_time: str):
     # test
-    # readin_target_txt(m)
-    # readin_site_txt(n)
+    readin_target_txt(m)
+    readin_site_txt(n)
 
     # 天区列表
     list_tar = get_list_target(m)
@@ -292,9 +296,13 @@ def GBlock(n: int, m: int, timeslot: int, start_time: str, end_time: str):
     time_used = np.zeros(n, dtype=float)
 
     now = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    os.mkdir(f"./output/{now}")
-    os.mkdir(f"./output/{now}/global")
-    os.mkdir(f"./output/{now}/site")
+    # pdb.set_trace()
+    os.mkdir(f"{base_dir}/output/{now}")
+    os.mkdir(f"{base_dir}/output/{now}/global")
+    os.mkdir(f"{base_dir}/output/{now}/site")
+    # return nowz``
+    # print(f"{base_dir}/output/{now}")
+    # time.sleep(10)
 
     # 总观测次数
     total_obs_num = 0
@@ -349,7 +357,7 @@ def GBlock(n: int, m: int, timeslot: int, start_time: str, end_time: str):
                 total_obs_num += 1
                 list_tar[target_i].am.append(airmass_min)
                 mat_am[obs_j][list_tar[target_i].last_time] = airmass_min
-                with open(f"./output/{now}/global/log.txt", 'a') as file:
+                with open(f"{base_dir}/output/{now}/global/log.txt", 'a') as file:
                     file.write(f"At time {time_now}, resource={list_obs[obs_j].name}, target={list_tar[target_i].num}, exp_time={timeslot}")
                     file.write("\n")
                 globle_json(now, list_obs[obs_j], list_tar[target_i], timeslot)
@@ -372,7 +380,7 @@ def GBlock(n: int, m: int, timeslot: int, start_time: str, end_time: str):
 
 
     # 打开文件
-    with open(f"./output/{now}/global/mat.txt", 'w') as file:
+    with open(f"{base_dir}/output/{now}/global/mat.txt", 'w') as file:
         # 遍历二维数组并写入文件
         for row in mat:
             # 将每行转换为字符串并用空格分隔
@@ -381,18 +389,18 @@ def GBlock(n: int, m: int, timeslot: int, start_time: str, end_time: str):
             file.write(row_str + '\n')
 
     # 每个台站时间片的成功分配率
-    obs_success(n, time_used, num_of_timeslots, f"./output/{now}/global/time_success.png")
+    # obs_success(n, time_used, num_of_timeslots, f"{base_dir}/output/{now}/global/time_success.png")
 
 
-    # 每个天区的观测次数
-    num_of_obs(list_tar, f"./output/{now}/global/num_of_obs.png")
+    # # 每个天区的观测次数
+    # num_of_obs(list_tar, f"{base_dir}/output/{now}/global/num_of_obs.png")
 
 
-    # 每个天区airmass方差
-    tar_airmass_var(m, list_tar, f"./output/{now}/global/var_airmass.png")
+    # # 每个天区airmass方差
+    # tar_airmass_var(m, list_tar, f"{base_dir}/output/{now}/global/var_airmass.png")
 
-    # 每个天区airmass平均值
-    tar_airmass_mean(m, list_tar, f"./output/{now}/global/mean_airmass.png")
+    # # 每个天区airmass平均值
+    # tar_airmass_mean(m, list_tar, f"{base_dir}/output/{now}/global/mean_airmass.png")
     
     return now
 

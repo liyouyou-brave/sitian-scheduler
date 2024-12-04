@@ -1,11 +1,14 @@
-import socket
 import os
+import sys
+import json
 import time
+import socket
 import select
 import struct
 import threading
-import json
+import file_lock
 
+SITE_LOCK_FILE = "/tmp/Site_lock"
 # Data header length, 4 bytes
 DATA_HEADER_LEN = 4
 # Socket path
@@ -35,6 +38,7 @@ def handle_client(client: socket.socket):
         message_len = client.recv(DATA_HEADER_LEN)
         if not message_len:
             print("Failed to receive data")
+            file_lock.re_lock(SITE_LOCK_FILE)
             break
         message_len = struct.unpack('I',message_len)[0]
         message = client.recv(message_len).decode('utf-8')
@@ -52,7 +56,12 @@ def connect_and_handle_client(server: socket.socket):
         print(f"site connected")
         threading.Thread(target=handle_client,args=(client,), daemon=True).start()
 def start_site_server():
+    site_lock = file_lock.ac_lock(lock_file=SITE_LOCK_FILE)
+    if not site_lock:
+        print("Site lock has been used")
+        sys.exit(1)
     site_server = create_server_socket(path=SITE_SOCKET_PATH)
     connect_and_handle_client(server=site_server)
     site_server.close()
+    
 start_site_server()

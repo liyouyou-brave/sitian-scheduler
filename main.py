@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from gschedule import Global
-from communication import global_server_v2
-from communication import site_server
+# from communication import global_server_v2
+# from communication import site_server
 
 import threading
 #########################################################
@@ -22,14 +22,14 @@ def main():
     # # ISO格式的日期字符串
     # start_time = '2022-05-01T00:00:00'
     # end_time = '2022-05-03T00:00:00'
-    threading.Thread(target=global_server_v2.start_global_server, args=()).start()
+    # threading.Thread(target=global_server_v2.start_global_server, args=()).start()
     # threading. Thread(target=site_server.start_site_server, args=()).start()
     
     # global_server.start_server()
     
     # site_server.start_site_server()
-    # Global.GBlock(n, m, timeslot, start_time, end_time)
-
+    Global.GBlock(5, 100, 5, '2022-05-01T00:00:00', '2022-05-03T00:00:00')
+ 
 
 
 if __name__ == '__main__':

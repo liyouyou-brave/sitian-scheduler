@@ -1,0 +1,50 @@
+{
+    "site_id": 2,
+    "target": [
+        {
+            "targ_id": 167,
+            "ra_targ": 88.57667,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 168,
+            "ra_targ": 97.05741,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 169,
+            "ra_targ": 105.53815,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 170,
+            "ra_targ": 114.01889,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 171,
+            "ra_targ": 122.49963,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        }
+    ]
+}

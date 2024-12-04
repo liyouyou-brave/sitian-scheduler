@@ -1,0 +1,347 @@
+{
+    "site_id": 4,
+    "target": [
+        {
+            "targ_id": 178,
+            "ra_targ": 183.51533,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 179,
+            "ra_targ": 192.25,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 272,
+            "ra_targ": 199.53543,
+            "ra_dec": -24.25,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 180,
+            "ra_targ": 200.98467,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 273,
+            "ra_targ": 206.82086,
+            "ra_dec": -24.25,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 282,
+            "ra_targ": 272.44354,
+            "ra_dec": -24.25,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 274,
+            "ra_targ": 214.10629,
+            "ra_dec": -24.25,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 426,
+            "ra_targ": 213.52,
+            "ra_dec": -2.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 181,
+            "ra_targ": 209.71933,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 427,
+            "ra_targ": 220.61,
+            "ra_dec": -2.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 429,
+            "ra_targ": 234.79,
+            "ra_dec": -2.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 275,
+            "ra_targ": 221.39171,
+            "ra_dec": -24.25,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 423,
+            "ra_targ": 192.25,
+            "ra_dec": -2.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 182,
+            "ra_targ": 218.454,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 276,
+            "ra_targ": 228.67714,
+            "ra_dec": -24.25,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 453,
+            "ra_targ": 47.3044,
+            "ra_dec": 4.55,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 434,
+            "ra_targ": 270.24,
+            "ra_dec": -2.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 456,
+            "ra_targ": 68.33704,
+            "ra_dec": 4.55,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 424,
+            "ra_targ": 199.34,
+            "ra_dec": -2.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 454,
+            "ra_targ": 54.31528,
+            "ra_dec": 4.55,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 183,
+            "ra_targ": 227.18867,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 178,
+            "ra_targ": 183.51533,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 179,
+            "ra_targ": 192.25,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 272,
+            "ra_targ": 199.53543,
+            "ra_dec": -24.25,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 180,
+            "ra_targ": 200.98467,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 273,
+            "ra_targ": 206.82086,
+            "ra_dec": -24.25,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 476,
+            "ra_targ": 205.93356,
+            "ra_dec": 4.55,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 274,
+            "ra_targ": 214.10629,
+            "ra_dec": -24.25,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 181,
+            "ra_targ": 209.71933,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 477,
+            "ra_targ": 212.77533,
+            "ra_dec": 4.55,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 275,
+            "ra_targ": 221.39171,
+            "ra_dec": -24.25,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 182,
+            "ra_targ": 218.454,
+            "ra_dec": -38.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 423,
+            "ra_targ": 192.25,
+            "ra_dec": -2.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 428,
+            "ra_targ": 227.7,
+            "ra_dec": -2.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 430,
+            "ra_targ": 241.88,
+            "ra_dec": -2.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 276,
+            "ra_targ": 228.67714,
+            "ra_dec": -24.25,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 427,
+            "ra_targ": 220.61,
+            "ra_dec": -2.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        },
+        {
+            "targ_id": 429,
+            "ra_targ": 234.79,
+            "ra_dec": -2.65,
+            "mode": "image",
+            "filter": "g",
+            "exptime": 5,
+            "nframe": 1
+        }
+    ]
+}
